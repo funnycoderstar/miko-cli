@@ -1,0 +1,23 @@
+{
+  "name": "super-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "super-cli": "./commands/init.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "camelcase": "^5.3.1",
+    "commander": "^2.20.0",
+    "cross-spawn": "^6.0.5",
+    "inquirer": "^6.4.1",
+    "shelljs": "^0.8.3",
+    "yeoman-generator": "^4.0.1",
+    "yo": "^2.0.6"
+  }
+}
