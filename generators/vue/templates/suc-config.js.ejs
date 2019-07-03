@@ -1,0 +1,23 @@
+module.exports = {
+    name: '<%= name %>',
+    description: '<%= description %>',
+    template: 'vue', // 项目模板类型, 不要修改!!!
+
+    dev: {
+        port: 6001, // dev server 端口号
+        sourceMap: '#eval', // source map, 参考:https://webpack.js.org/configuration/devtool/
+    },
+
+    build: {
+        sourceMap: '#source-map', // 同 dev.sourceMap
+    },
+
+    pages: [
+        {
+            title: '示例页面',
+            entry: 'src/index.js',
+            src: 'src/index.html',
+            filename: 'index.html',
+        },
+    ],
+};

@@ -68,6 +68,8 @@ module.exports = class Test extends Generator {
             'src/index.html.ejs',
             'src/index.js.ejs',
             '.gitignore.ejs',
+            '.eslintrc.ejs',
+            'suc-config.js.ejs',
             'package.json.ejs',
         ], options);
     }
