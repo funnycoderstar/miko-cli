@@ -65,15 +65,18 @@ module.exports = class Test extends Generator {
         }, this.props);
 
         writing.copyTpl.call(this, [
-            'src/index.html.ejs',
-            'src/index.js.ejs',
             '.gitignore.ejs',
             '.eslintrc.ejs',
             'suc-config.js.ejs',
             'package.json.ejs',
         ], options);
+        writing.copy.call(this, [
+            'src/index.js',
+            'src/app.vue',
+        ]);
     }
     end() {
+        spawn.sync('cnpm', 'i');
         this.log('项目配置完成');
     }
 }

@@ -9,8 +9,8 @@ const defaultConfig = {
         autoOpenBrowser: false,
     },
     build: {
-        publicPath: './dist/',
-        assetsRoot: './dist',
+        publicPath: './',
+        assetsRoot: path.resolve(__dirname, '../dist'),,
         assetsSubDirectory: '',
     },
 }
