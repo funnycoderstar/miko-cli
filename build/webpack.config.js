@@ -25,33 +25,30 @@ const defaultTemplate = resolve('build/templates/vue-h5.html');
  */
 
 const jsLoader = {
-    loader: require.resolve('babel-loader');
+    loader: require.resolve('babel-loader'),
     options: {
         presets: [
             require.resolve('babel-preset-stage-0'),
             [
                 require.resolve('babel-preset-env'),
                 Object.assign({
-                    targets: '> 0.5%, last 3 versions, Firefox ESR, not dead',
                     useBuiltIns: 'usage',
                     modules: false,
                 }, config.babelPresetEnvConfig),
             ]
 
         ],
-        plugins: [
-            babelrc: false,
-        ]
+        babelrc: false,
     }
 }
 
 const frameworkConfig = {
     rules: [
         {
-            test: '\.vue$',
+            test: /\.vue$/,
             use: [
                 {
-                    loader: resolve('vue-loader'),
+                    loader: resolve('node_modules/vue-loader/lib/index'),
                     options: {
                         hotReload: config.dev.hotReload === undefined ? true : config.dev.hotReload
                     }
@@ -59,7 +56,7 @@ const frameworkConfig = {
             ]
         },
         {
-            test: '\.less$',
+            test: /\.less$/,
             use: [
                 env.isdev ?  require.resolve('vue-style-loader') : MiniCssExtractPlugin.loader,
                 require.resolve('css-loader'),
@@ -67,7 +64,7 @@ const frameworkConfig = {
                     loader: require.resolve('postcss-loader'),
                     options: {
                         plugins: [
-                            new autoprefixer({ browsers: ['cover 100%']}),
+                            new autoprefixer(),
                         ]
                     }
                 },
@@ -75,7 +72,7 @@ const frameworkConfig = {
             ]
         },
         {
-            test: '\.css$',
+            test: /\.css$/,
             use: [
                 env.isDev ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
                 require.resolve('css-loader'),
@@ -120,37 +117,44 @@ const frameworkConfig = {
 }
 // webpack公共配置
 const webpackConfig = {
-    entry: {},
+    entry: resolveCwd('src/index.js'),
     output: {
         path: outputPath,
         filename: '[name].js'
     },
-    modules: {
-        rules: [...frameworkConfig.rules],
-        plugins: [
-            ...frameworkConfig.plugins,
-            new HtmlWebpackPlugin(
-                filename: 'index.html',
-                template: 'index.html',
-                inject: true
-            ),
-            new ScriptExitHtmlWebpackPlugin({
-                custom: [
-                    {
-                        test: /\.js$/,
-                        attributes: 'crossorigin',
-                        value: 'anonymous',
-                    }
-                ]
-            }),
-        ]
+    resolve: {
+        alias: Object.assign({
+            vue$: 'vue/dist/vue.js',
+        }, config.alias),
     },
+    module: {
+        rules: [...frameworkConfig.rules]
+    },
+    plugins: [
+        ...frameworkConfig.plugins,
+        new HtmlWebpackPlugin(
+            {
+                filename: 'index.html',
+                template: resolve('build/templates/vue-h5.html'),
+                inject: true
+            }
+        ),
+        new ScriptExitHtmlWebpackPlugin({
+            custom: [
+                {
+                    test: /\.js$/,
+                    attributes: 'crossorigin',
+                    value: 'anonymous',
+                }
+            ]
+        }),
+    ],
     optimization: {
         splitChunks: config.splitChunks || {
             name: 'common',
             chunks: 'all',
             minSize: 30000,
-            minChunks: Math.floor(Object.keys(webpackConfig.entry).length / 2) || 1,
+            minChunks: 3,
             cacheGroups: {
                 vendor: {
                     name: 'vendor',

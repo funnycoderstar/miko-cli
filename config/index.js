@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const deepmerge = require('deepmerge');
 const resolveCwd = require('../util/resolveCwd.js');
 
@@ -10,7 +11,7 @@ const defaultConfig = {
     },
     build: {
         publicPath: './',
-        assetsRoot: path.resolve(__dirname, '../dist'),,
+        assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: '',
     },
 }

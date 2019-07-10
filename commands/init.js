@@ -23,8 +23,8 @@ const initAction = () => {
 program.version(require('../package.json').version)
 
 program
-    .command('init')
-    .description('创建项目')
-    .action(initAction)
-
-program.parse(process.argv)
+    .command('init', '创建项目')
+    .command('dev', '启动开发服务')
+    .command('build', '构建打包内容')
+    .command('publish', '发布新版本')
+    .parse(process.argv)
