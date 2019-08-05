@@ -1,23 +1,17 @@
-// http://eslint.org/docs/user-guide/configuring
-
-module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
   },
-  env: {
-    browser: true,
+  "env": {
+    "browser": true
   },
-  // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  // extends: 'standard',
-  // required to lint *.vue files
-  plugins: [
-    'html'
+  "plugins": [
+    "html"
   ],
-  // add your custom rules here
-  'rules': {
-         "indent": [2, 4],
+  "rules": {
+        "indent": [2, 4],
         "global-require": 0,
         "new-cap": 0,
         "func-names": 0,
