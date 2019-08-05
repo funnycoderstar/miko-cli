@@ -11,7 +11,7 @@ const defaultConfig = {
     },
     build: {
         publicPath: './',
-        assetsRoot: path.resolve(__dirname, '../dist'),
+        assetsRoot: resolveCwd('./dist'),
         assetsSubDirectory: '',
     },
 }

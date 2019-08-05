@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const program = require('commander');
 const inquirer = require('inquirer');
 const spawn = require('cross-spawn');
@@ -19,12 +17,4 @@ const initAction = () => {
         spawn.sync(resolve('node_modules/.bin/yo'), [templatePath], { stdio: 'inherit' });
     })
 }
-
-program.version(require('../package.json').version)
-
-program
-    .command('init')
-    .description('创建项目')
-    .action(initAction)
-
-program.parse(process.argv)
+initAction();

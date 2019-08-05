@@ -28,9 +28,8 @@ const jsLoader = {
     loader: require.resolve('babel-loader'),
     options: {
         presets: [
-            require.resolve('babel-preset-stage-0'),
             [
-                require.resolve('babel-preset-env'),
+                require.resolve('@babel/preset-env'),
                 Object.assign({
                     useBuiltIns: 'usage',
                     modules: false,
@@ -79,7 +78,7 @@ const frameworkConfig = {
             ]
         },
         Object.assign({
-            test: /\.jsx$/,
+            test: /\.jsx?$/,
             use: jsLoader,
             exclude: /node_modules/,
         }, config.babelLoaderConfig),

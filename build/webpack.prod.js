@@ -31,7 +31,7 @@ module.exports = merge(baseConfig, {
                 sourceMap: config.build.sourceMap !== '',
             })
         ]
-    }
+    },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {

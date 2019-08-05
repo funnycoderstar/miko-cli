@@ -76,7 +76,9 @@ module.exports = class Test extends Generator {
         ]);
     }
     end() {
-        spawn.sync('cnpm', 'i');
+        this.log('项目配置中...');
+        spawn.sync('cnpm', ['install']);
         this.log('项目配置完成');
+        process.exit(0);
     }
 }
