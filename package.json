@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "super-cli": "./commands/init.js"
+    "super-cli": "commands/index.js",
+    "suc":  "commands/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^2.20.0",
+    "commander": "^3.0.0-0",
     "cross-spawn": "^6.0.5",
     "inquirer": "^6.4.1",
     "shelljs": "^0.8.3",
