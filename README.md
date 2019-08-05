@@ -52,3 +52,18 @@ $ npm link my-utils
 
 ### npm init -f
 生成默认的package.json文件，无需手动填写。
+
+## 如何在本地测试super-cli工具
+```bash
+$ git clone https://github.com/funnycoderstar/super-cli.git
+$ cd super-cli
+$ npm i
+```
+- 在`super-cli`目录下执行 `npm link`
+- 创建`test`目录，进到`test`目录, 执行相关命令
+   - `mkdir test`
+   - `cd test`
+   - `super-cli init vue`
+   - `super-cli dev 或者npm run dev`
+
+
