@@ -1,8 +1,11 @@
-const program = require('commander');
-const inquirer = require('inquirer');
-const spawn = require('cross-spawn');
-const fs = require('fs');
-const resolve = require('../util/resolve');
+import * as inquirer from 'inquirer';
+import * as spawn from 'cross-spawn';
+import resolve  from '../util/resolve';
+
+interface Answers {
+    /** 模板名称 */
+    name: string;
+}
 
 const initAction = () => {
     inquirer.prompt([{
@@ -10,9 +13,9 @@ const initAction = () => {
         message: '请输入模板:',
         name: 'name',
         default: 'vue'
-    }]).then(answers => {
+    }]).then((answers: Answers) => {
         console.log('模板名为：', answers.name)
-        templatePath = resolve(`generators/${answers.name}`);
+        const templatePath = resolve(`generators/${answers.name}`);
         console.log('正在初始化项目，请稍等', templatePath);
         spawn.sync(resolve('node_modules/.bin/yo'), [templatePath], { stdio: 'inherit' });
     })

@@ -1,7 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const deepmerge = require('deepmerge');
-const resolveCwd = require('../util/resolveCwd.js');
+import * as fs from 'fs';
+import * as deepmerge from 'deepmerge';
+import resolveCwd from '../util/resolveCwd';
+
+interface Config {
+    /** 模板名称 */
+    template: string;
+}
 
 const defaultConfig = {
     dev: {
@@ -31,4 +35,4 @@ if (configFile) {
     userConfig = require(configFile);
 }
 
-module.exports = deepmerge(defaultConfig, userConfig);
+export default deepmerge(defaultConfig, userConfig) as unknown as Config;
