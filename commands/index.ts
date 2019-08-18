@@ -1,33 +1,34 @@
-#!/usr/bin/env node
-import chalk from 'chalk';
+#!/usr/bin/env ts-node
+// import chalk from 'chalk';
 import * as  program from 'commander';
-import * as  inquirer from 'inquirer';
-import { version } from '../package.json';
-import { getLastVersion, installLastest } from '../util/npm';
+// import * as  inquirer from 'inquirer';
+// import { version, name } from '../package.json';
+const { version, name } = require('../package.json');
+// import { getLastVersion, installLastest } from '../util/npm';
 
-interface Result {
-    shouldUpdate: boolean;
-}
+// interface Result {
+//     shouldUpdate: boolean;
+// }
 
-const latestVersion = getLastVersion(name);
+// const latestVersion = getLastVersion(name);
 
-console.log(chalk.green(`${name} 本地版本 ${version}`));
-if (version !== latestVersion) {
-    inquirer.prompt([{
-        type: 'confirm',
-        name: 'shouldUpdate',
-        message: `检测到新版本${latestVersion}，是否执行更新？`,
-    }]).then((result: Result) => {
-        if (result.shouldUpdate) {
-            installLastest(name);
-            console.log(chalk.green(`\n\n${name} 更新完毕, 请重试 ^_^`));
-        } else {
-            run();
-        }
-    });
-} else {
-    run();
-}
+// console.log(chalk.green(`${name} 本地版本 ${version}`));
+// if (version !== latestVersion) {
+//     inquirer.prompt([{
+//         type: 'confirm',
+//         name: 'shouldUpdate',
+//         message: `检测到新版本${latestVersion}，是否执行更新？`,
+//     }]).then((result: Result) => {
+//         if (result.shouldUpdate) {
+//             installLastest(name);
+//             console.log(chalk.green(`\n\n${name} 更新完毕, 请重试 ^_^`));
+//         } else {
+//             run();
+//         }
+//     });
+// } else {
+//     run();
+// }
 
 run();
 function run() {

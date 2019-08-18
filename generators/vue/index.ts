@@ -1,13 +1,21 @@
-const path = require('path');
-const Generator = require('yeoman-generator');
-const spawn = require('cross-spawn');
-const toCamelCase = require('camelcase');
+import * as path from 'path';
+import * as Generator from 'yeoman-generator';
+import * as spawn from 'cross-spawn';
+import * as toCamelCase from 'camelcase';
 
-const resolveCwd = require('../../util/resolveCwd');
-const exec = require('../../util/exec');
-const writing = require('../../util/writing');
+import resolveCwd from '../../util/resolveCwd';
+
+import { getOutput  }from '../../util/exec';
+import * as writing from '../../util/writing';
+
+interface TestProps {
+    name: string;
+}
 
 module.exports = class Test extends Generator {
+    private props: TestProps = null;
+    private error = false;
+
     prompting() {
         const done = this.async();
 
@@ -43,7 +51,7 @@ module.exports = class Test extends Generator {
                     default: gitEmail,
                 }
             ]).then((answers) => {
-                this.props = answers;
+                this.props = answers as TestProps;
                 this.props.name = name;
                 done();
         });
@@ -52,7 +60,7 @@ module.exports = class Test extends Generator {
         const { name } = this.props;
         let gitlab = '';
         try {
-            gitlab = exec.getOutput('git', ['remote', 'get-url', 'origin']);
+            gitlab = getOutput('git', ['remote', 'get-url', 'origin']);
         } catch (err) {
             console.error('  获取gitlab仓库地址失败');
             this.error = true;

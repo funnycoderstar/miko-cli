@@ -15,7 +15,7 @@ const initAction = () => {
         default: 'vue'
     }]).then((answers: Answers) => {
         console.log('模板名为：', answers.name)
-        const templatePath = resolve(`generators/${answers.name}`);
+        const templatePath = resolve(`generators/${answers.name}/index.ts`);
         console.log('正在初始化项目，请稍等', templatePath);
         spawn.sync(resolve('node_modules/.bin/yo'), [templatePath], { stdio: 'inherit' });
     })

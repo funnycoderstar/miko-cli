@@ -70,3 +70,10 @@ $ npm i
    - `super-cli dev 或者npm run dev`
 
 
+## 修改为ts文件后遇到的问题
+
+执行 super init 的时候， 发现一个问题，如果是 super-cli-init.ts文件时，就不执行，直接退出，如果是super-cli-init.js的时候，就正常，对比发现是commander的问题
+![执行ts](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1566146565084.png)
+![执行js](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1566146576782.png)
+临时改了源码用下面方法这种方法解决了
+![temp](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1566146609618.png?width=1754&height=382&imageView2/3/w/537/h/116)

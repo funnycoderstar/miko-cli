@@ -8,13 +8,14 @@
   },
   "bin": {
     "super-cli": "commands/index.ts",
-    "suc": "commands/index.ts"
+    "suc": "commands/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/cross-spawn": "^6.0.0",
     "@types/inquirer": "^6.5.0",
+    "@types/yeoman-generator": "^3.1.4",
     "commander": "^3.0.0-0",
     "cross-spawn": "^6.0.5",
     "inquirer": "^6.4.1",
@@ -45,6 +46,7 @@
     "script-ext-html-webpack-plugin": "^2.1.3",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.4",
+    "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "url-loader": "^2.0.1",
