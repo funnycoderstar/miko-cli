@@ -1,0 +1,36 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "测试",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funnycoderstar/vuepress-theme-lemon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funnycoderstar/vuepress-theme-lemon/issues"
+  },
+  "homepage": "https://github.com/funnycoderstar/vuepress-theme-lemon#readme",
+  "devDependencies": {
+    "vuepress": "^1.1.0"
+  },
+  "dependencies": {
+    "@vssue/api-github-v3": "^1.1.0",
+    "@vuepress/plugin-active-header-links": "^1.0.0-rc.1",
+    "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
+    "@vuepress/plugin-blog": "^1.2.5",
+    "@vuepress/plugin-nprogress": "^1.1.0",
+    "@vuepress/plugin-pwa": "^1.1.0",
+    "@vuepress/plugin-search": "^1.1.0",
+    "dayjs": "^1.8.16",
+    "randomcolor": "^0.5.4",
+    "remove-markdown": "^0.3.0",
+    "vssue": "^1.1.0"
+  }
+}

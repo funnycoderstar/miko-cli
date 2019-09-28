@@ -1,0 +1,3 @@
+---
+layoutType: 'tags'
+---
