@@ -1,5 +1,19 @@
 ## super-cli
-super-cli
+`super-cli`一个用于生成常用的一个模板文件的`cli`工具。
+
+目前支持一下模板：
+- `vue`
+- `vue-cli-plugin`
+- `vuepress-lemon`
+
+## 用法
+```js
+super-cli create [dirname] [templateName]
+```
+- `dirname`: 生成项目的目录名称。可选参数，默认为当前目录 `./`。
+- `templateName`： 选择成功的模板名称。可选参数。没有传入则需要选择 `vue`, `vue-cli-plugin`, `vuepress-lemon`
+
+
 
 ## 引用的一些包的用途
 - [script-ext-html-webpack-plugin](https://github.com/numical/script-ext-html-webpack-plugin)：通过脚本的不同部署选项增强html-webpack-plugin功能，包括`async`，`preload`，`prefetch`，`defer`，`module`，自定义属性和内联。
