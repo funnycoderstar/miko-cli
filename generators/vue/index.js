@@ -2,11 +2,12 @@ const path = require('path');
 const Generator = require('yeoman-generator');
 const spawn = require('cross-spawn');
 const toCamelCase = require('camelcase');
-
+const ora = require('ora');
 const resolveCwd = require('../../util/resolveCwd');
 const exec = require('../../util/exec');
 const writing = require('../../util/writing');
-
+const cwd = process.cwd();
+        console.log(cwd);
 module.exports = class Test extends Generator {
     prompting() {
         const done = this.async();
@@ -41,6 +42,25 @@ module.exports = class Test extends Generator {
                     name: 'email',
                     message: '请输入邮箱地址:',
                     default: gitEmail,
+                },
+                {
+                    type: 'list',
+                    name: 'action',
+                    message: `Pick an action:`,
+                    choices: [{
+                            name: 'npm',
+                            value: 'npm'
+                        },
+                        {
+                            name: 'cnpm',
+                            value: 'cnpm'
+                        },
+                        {
+                            name: 'yarn',
+                            value: 'yarn'
+                        }
+                    ],
+                    default: 'cnpm',
                 }
             ]).then((answers) => {
                 this.props = answers;
@@ -69,6 +89,7 @@ module.exports = class Test extends Generator {
             '.eslintrc.ejs',
             'suc-config.js.ejs',
             'package.json.ejs',
+            'README.md.ejs',
         ], options);
         writing.copy.call(this, [
             'src/index.js',
@@ -76,8 +97,11 @@ module.exports = class Test extends Generator {
         ]);
     }
     end() {
-        this.log('项目配置中...');
-        spawn.sync('cnpm', ['install']);
+        const { action } = this.props;
+        const spinner = ora('⚙  Installing some packages. This might take a while...');
+        spinner.start();
+        spawn.sync(action, ['install'], { stdio: 'inherit'});
+        spinner.stop();
         this.log('项目配置完成');
         process.exit(0);
     }

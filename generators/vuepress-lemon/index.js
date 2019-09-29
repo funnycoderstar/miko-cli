@@ -45,7 +45,7 @@ module.exports = class Test extends Generator {
                 {
                     type: 'list',
                     name: 'action',
-                    message: `. Pick an action:`,
+                    message: ` Pick an action:`,
                     choices: [{
                             name: 'npm',
                             value: 'npm'
@@ -86,6 +86,7 @@ module.exports = class Test extends Generator {
         writing.copyTpl.call(this, [
             '.gitignore.ejs',
             'package.json.ejs',
+            'README.md.ejs',
         ], options);
         writing.copy.call(this, [
             'docs/tags/',
@@ -100,7 +101,7 @@ module.exports = class Test extends Generator {
         const { action } = this.props;
         const spinner = ora('⚙  Installing some packages. This might take a while...');
         spinner.start();
-        spawn.sync(action, ['install']);
+        spawn.sync(action, ['install'], { stdio: 'inherit'});
         spinner.stop();
         this.log('项目配置完成');
         process.exit(0);
