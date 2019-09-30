@@ -1,5 +1,5 @@
 {
-  "name": "super-cli",
+  "name": "miko-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,11 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "super-cli": "commands/index.js",
-    "suc": "commands/index.js"
+    "miko-cli": "commands/index.js"
   },
-  "author": "",
+  "author": "funnycoderstar",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funnycoderstar/miko-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/funnycoderstar/miko-cli/issues"
+  },
+  "homepage": "https://github.com/funnycoderstar/miko-cli#readme",
   "dependencies": {
     "commander": "^3.0.0-0",
     "cross-spawn": "^6.0.5",

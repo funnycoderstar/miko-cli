@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const exec = require('../util/exec');
-const config = require('../config/index');
+const config = require('../config');
 const resolve = require('../util/resolve');
 const env = require('../util/env');
 
