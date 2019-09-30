@@ -46,9 +46,14 @@ async function generateDir() {
                 name: 'action',
                 type: 'list',
                 message: `Target directory ${chalk.cyan(targetDir)} already exists. Pick an action:`,
-                choices: [{
+                choices: [
+                    {
                         name: 'Overwrite',
                         value: 'overwrite'
+                    },
+                    {
+                        name: 'Merge',
+                        value: 'merge'
                     },
                     {
                         name: 'Cancel',
