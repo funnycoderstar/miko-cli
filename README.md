@@ -37,5 +37,5 @@ $ npm i
 - 创建`test`目录，进到`test`目录, 执行相关命令
    - `mkdir test`
    - `cd test`
-   - `miko-cli init vue`
-   - `miko-cli dev 或者npm run dev`
+   - `miko-cli create`
+   - `miko-cli dev 或者 npm run dev`
