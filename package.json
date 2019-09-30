@@ -1,7 +1,7 @@
 {
   "name": "miko-cli",
   "version": "1.0.1",
-  "description": "",
+  "description": "miko-cli一个用于生成常用的一个模板文件的cli工具。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,15 @@
   "bin": {
     "miko-cli": "commands/index.js"
   },
+  "keywords": [
+    "vue",
+    "vue-cli",
+    "miko-cli",
+    "vue-cli-plugin",
+    "vuepress",
+    "theme",
+    "vuepress-theme-lemon"
+  ],
   "author": "funnycoderstar",
   "license": "ISC",
   "repository": {
