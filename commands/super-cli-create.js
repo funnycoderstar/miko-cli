@@ -69,20 +69,15 @@ async function generateDir() {
 }
 
 function generateTemplate(targetDir) {
-    const template = process.argv[3];
-    if (template === undefined) {
-        const templates = fs.readdirSync(resolve('generators'));
-        inquirer.prompt([{
-            type: 'list',
-            choices: templates,
-            name: 'template',
-            message: 'Please select the project template to be generated',
-        }]).then((result) => {
-            generate(result.template, targetDir);
-        });
-    } else {
-        generate(template, targetDir);
-    }
+    const templates = fs.readdirSync(resolve('generators'));
+    inquirer.prompt([{
+        type: 'list',
+        choices: templates,
+        name: 'template',
+        message: 'Please select the project template to be generated',
+    }]).then((result) => {
+        generate(result.template, targetDir);
+    });
 }
 
 function generate(templateName, targetDir) {
